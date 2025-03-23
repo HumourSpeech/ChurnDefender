@@ -38,19 +38,29 @@ This project aims to predict customer churn using a deep learning model built wi
 ### 7. TensorBoard
 - Set up TensorBoard for visualizing training logs.
 
+### 8. Prediction
+- **Prediction Notebook**: The `prediction.ipynb` file demonstrates how to load the saved model and encoders to make predictions on new data.
+- **Steps in Prediction**:
+  - Load the saved model (`model.h5`).
+  - Load the encoders (`label_encoder_gender.pkl`, `onehot_encoder_geo.pkl`) and scaler (`scaler.pkl`).
+  - Preprocess new data using the encoders and scaler.
+  - Use the model to predict the probability of churn for each customer.
+
 ## How to Run
 1. Install the required libraries:
    ```bash
    pip install tensorflow pandas scikit-learn
    ```
 2. Run the Jupyter Notebook to preprocess the data, train the model, and save the artifacts.
-3. Start TensorBoard to visualize training logs:
+3. Use `prediction.ipynb` to make predictions on new data.
+4. Start TensorBoard to visualize training logs:
    ```bash
    %tensorboard --logdir logs/fit
    ```
 
 ## Files
 - `experiment.ipynb`: Contains the code for preprocessing, training, and saving the model.
+- `prediction.ipynb`: Demonstrates how to load the model and make predictions on new data.
 - `label_encoder_gender.pkl`: Saved `LabelEncoder` for the `Gender` column.
 - `onehot_encoder_geo.pkl`: Saved `OneHotEncoder` for the `Geography` column.
 - `scaler.pkl`: Saved `StandardScaler` for feature scaling.
