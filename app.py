@@ -30,8 +30,8 @@ credit_score = st.number_input('Credit Score')
 estimated_salary = st.number_input('Estimated Salary')
 tenure = st.slider('Tenure', 0, 10)
 num_of_products = st.slider('Number of Products', 1, 4)
-has_cr_card = st.selecbox('Has Credit Card', [0,1])
-is_active_member = st.selectbox('Is Acirve Member', [0,1])
+has_cr_card = st.selectbox('Has Credit Card', [0,1])
+is_active_member = st.selectbox('Is Active Member', [0,1])
 
 #Prepare the input data
 input_data = pd.DataFrame({
@@ -46,5 +46,23 @@ input_data = pd.DataFrame({
     'EstimatedSalary' : [estimated_salary]
 })
 
-geo_encoded = onehot_encoder_geo.transform([[input_data['Geography']]]).toarray()
+#One_hot encode 'Geography
+geo_encoded = onehot_encoder_geo.transform([[geography]]).toarray()
 geo_encoded_df = pd.DataFrame(geo_encoded, columns=onehot_encoder_geo.get_feature_names_out(['Geography']))
+
+#Combine one_hot encoded columns with input data
+input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis=1)
+
+#Scaling the input data
+input_data_scaled = scaler.transform(input_data)
+
+#prediction churn
+prediction = model.predict(input_data_scaled)
+pred_probability = prediction[0][0]
+
+st.write(f'Churn Probabilty: {pred_probability: .2f}')
+
+if pred_probability > 0.5:
+    st.write('Customer is likely to churn')
+else:
+    st.write('Customer is not likely to churn')
