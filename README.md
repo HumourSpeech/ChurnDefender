@@ -46,14 +46,32 @@ This project aims to predict customer churn using a deep learning model built wi
   - Preprocess new data using the encoders and scaler.
   - Use the model to predict the probability of churn for each customer.
 
+### 9. Streamlit Integration
+- **Streamlit App**: The `app.py` file provides a web interface for interacting with the model.
+- **Features**:
+  - Users can input customer details through the web interface.
+  - The app preprocesses the input using the saved encoders and scaler.
+  - The model predicts the probability of churn and displays the result.
+- **How to Run the App**:
+  1. Install Streamlit:
+     ```bash
+     pip install streamlit
+     ```
+  2. Run the app:
+     ```bash
+     streamlit run app.py
+     ```
+  3. Open the provided URL in your browser to access the app.
+
 ## How to Run
 1. Install the required libraries:
    ```bash
-   pip install tensorflow pandas scikit-learn
+   pip install tensorflow pandas scikit-learn streamlit
    ```
 2. Run the Jupyter Notebook to preprocess the data, train the model, and save the artifacts.
 3. Use `prediction.ipynb` to make predictions on new data.
-4. Start TensorBoard to visualize training logs:
+4. Run `app.py` to interact with the model through a web interface.
+5. Start TensorBoard to visualize training logs:
    ```bash
    %tensorboard --logdir logs/fit
    ```
@@ -61,6 +79,7 @@ This project aims to predict customer churn using a deep learning model built wi
 ## Files
 - `experiment.ipynb`: Contains the code for preprocessing, training, and saving the model.
 - `prediction.ipynb`: Demonstrates how to load the model and make predictions on new data.
+- `app.py`: Streamlit app for deploying the model with a web interface.
 - `label_encoder_gender.pkl`: Saved `LabelEncoder` for the `Gender` column.
 - `onehot_encoder_geo.pkl`: Saved `OneHotEncoder` for the `Geography` column.
 - `scaler.pkl`: Saved `StandardScaler` for feature scaling.
@@ -69,6 +88,7 @@ This project aims to predict customer churn using a deep learning model built wi
 ## Future Work
 - Experiment with different architectures and hyperparameters.
 - Add more advanced preprocessing techniques.
-- Deploy the model for real-time predictions.
+- Enhance the Streamlit app with additional features.
+- Deploy the app to a cloud platform for real-time predictions.
 
 
