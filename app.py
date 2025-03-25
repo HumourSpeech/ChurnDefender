@@ -19,8 +19,12 @@ with open('scaler.pkl', 'rb') as file:
     scaler = pickle.load(file)
 
 ## streamlit app
-st.title('Customer Churn Prediction')
-
+st.set_page_config(page_title="Churn Defender", page_icon=":shield:", layout="centered")
+st.title('🔮 Churn Defender')
+st.markdown("""
+Welcome to **Churn Defender**, a machine learning-powered application to predict customer churn. 
+Enter customer details below to find out the likelihood of churn. Let's make data-driven decisions together! 🚀
+""")
 #User input
 geography = st.selectbox('Geography', onehot_encoder_geo.categories_[0])
 gender = st.selectbox('Gender', label_encoder_gender.classes_)
@@ -57,12 +61,26 @@ input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis
 input_data_scaled = scaler.transform(input_data)
 
 #prediction churn
-prediction = model.predict(input_data_scaled)
-pred_probability = prediction[0][0]
+# prediction = model.predict(input_data_scaled)
+# pred_probability = prediction[0][0]
 
-st.write(f'Churn Probabilty: {pred_probability: .2f}')
+# st.write(f'Churn Probabilty: {pred_probability: .2f}')
 
-if pred_probability > 0.5:
-    st.write('Customer is likely to churn')
-else:
-    st.write('Customer is not likely to churn')
+# if pred_probability > 0.5:
+#     st.write('Customer is likely to churn')
+# else:
+#     st.write('Customer is not likely to churn')
+
+# Predict churn
+if st.button("Predict Churn"):
+    prediction = model.predict(input_data_scaled)
+    pred_prob = prediction[0][0]
+    if pred_prob > 0.5:
+        st.error(f"⚠️ High Risk of Churn: {pred_prob:.2f}")
+    else:
+        st.success(f"✅ Low Risk of Churn: {pred_prob:.2f}")
+
+st.markdown("""
+---
+### Developed by Nitin Mishra
+""")
