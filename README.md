@@ -2,6 +2,10 @@
 
 This project aims to predict customer churn using a deep learning model built with TensorFlow and Keras. The dataset used is `Churn_Modelling.csv`.
 
+## Live Demo
+
+Check out the deployed app [here](https://churndefender.streamlit.app/).
+
 ## Steps Performed
 
 ### 1. Data Preprocessing
@@ -52,21 +56,30 @@ This project aims to predict customer churn using a deep learning model built wi
   - Users can input customer details through the web interface.
   - The app preprocesses the input using the saved encoders and scaler.
   - The model predicts the probability of churn and displays the result.
-- **How to Run the App**:
-  1. Install Streamlit:
+
+### 10. Deployment
+- The project is deployed using **Streamlit**.
+- **Requirements File**: A `requirements.txt` file is included to ensure all dependencies are installed.
+- **How to Run the App Locally**:
+  1. Clone the repository:
      ```bash
-     pip install streamlit
+     git clone <repository-url>
+     cd ChurnDefender
      ```
-  2. Run the app:
+  2. Install the required dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+  3. Run the Streamlit app:
      ```bash
      streamlit run app.py
      ```
-  3. Open the provided URL in your browser to access the app.
+  4. Open the provided URL in your browser to access the app.
 
 ## How to Run
 1. Install the required libraries:
    ```bash
-   pip install tensorflow pandas scikit-learn streamlit
+   pip install -r requirements.txt
    ```
 2. Run the Jupyter Notebook to preprocess the data, train the model, and save the artifacts.
 3. Use `prediction.ipynb` to make predictions on new data.
@@ -80,6 +93,7 @@ This project aims to predict customer churn using a deep learning model built wi
 - `experiment.ipynb`: Contains the code for preprocessing, training, and saving the model.
 - `prediction.ipynb`: Demonstrates how to load the model and make predictions on new data.
 - `app.py`: Streamlit app for deploying the model with a web interface.
+- `requirements.txt`: Lists all the dependencies required to run the project.
 - `label_encoder_gender.pkl`: Saved `LabelEncoder` for the `Gender` column.
 - `onehot_encoder_geo.pkl`: Saved `OneHotEncoder` for the `Geography` column.
 - `scaler.pkl`: Saved `StandardScaler` for feature scaling.
