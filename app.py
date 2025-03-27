@@ -82,5 +82,5 @@ if st.button("Predict Churn"):
 
 st.markdown("""
 ---
-### Developed by [Nitin Mishra](https://github.com/HumourSpeech/ChurnDefender)
+### Developed by [Nitin Mishra](https://github.com/HumourSpeech/ChurnDefender/blob/main/README.md)
 """)
