@@ -63,7 +63,7 @@ Check out the deployed app [here](https://churndefender.streamlit.app/).
 - **How to Run the App Locally**:
   1. Clone the repository:
      ```bash
-     git clone <repository-url>
+     git clone https://github.com/HumourSpeech/ChurnDefender
      cd ChurnDefender
      ```
   2. Install the required dependencies:
